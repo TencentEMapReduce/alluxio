@@ -742,7 +742,7 @@ public abstract class AbstractFileSystem extends org.apache.hadoop.fs.FileSystem
    * @param path the input path
    * @return the Alluxio path
    */
-  protected abstract AlluxioURI getAlluxioPath(Path path);
+  protected abstract AlluxioURI getAlluxioPath(Path path) throws IOException;
 
   /**
    * Used to get FS native path from Alluxio file status.
@@ -751,5 +751,5 @@ public abstract class AbstractFileSystem extends org.apache.hadoop.fs.FileSystem
    * @param fileStatus Alluxio file status
    * @return FS native path
    */
-  protected abstract Path getFsPath(String fsUriHeader, URIStatus fileStatus);
+  protected abstract Path getFsPath(String fsUriHeader, URIStatus fileStatus) throws IOException;
 }

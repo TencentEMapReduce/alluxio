@@ -25,6 +25,8 @@
   <modules>
     <module>fs</module>
     <module>hdfs</module>
+    <module>shim</module>
+    <module>shimhdfs</module>
   </modules>
 
   <properties>

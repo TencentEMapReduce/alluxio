@@ -236,5 +236,72 @@ public final class HadoopUtils {
     return new URIStatus(info);
   }
 
+  /**
+   * @param filePath the file path
+   * @param folderPath the folder path
+   * @return whether the file exist in folder
+   */
+  public static boolean isFileInFolder(String filePath, String folderPath) {
+    // check filePath if prefix with folderPath
+    if (filePath.startsWith(folderPath)) {
+      return true;
+    }
+    // check if same folder
+    if (filePath.length() == folderPath.length() - 1) {
+      return folderPath.substring(0, folderPath.length() - 1).equals(filePath);
+    }
+    return false;
+  }
+
+  /**
+   * @param mountTable mount table
+   * @param alluxioPath alluxio path
+   * @return CosN path
+   */
+  public static String getCosNPathByAlluxioPath(final Map<String, String> mountTable,
+      final String alluxioPath) {
+    for (Map.Entry<String, String> entry: mountTable.entrySet()) {
+      String mMountPoint = entry.getKey();
+      String ufsUri = entry.getValue();
+      // Precondition: mount points will not be nested
+      if (isFileInFolder(alluxioPath, mMountPoint)) {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(ufsUri);
+        if (alluxioPath.length() > mMountPoint.length()) {
+          String relativePath = alluxioPath.substring(mMountPoint.length());
+          stringBuilder.append(relativePath);
+        }
+        LOG.info("Alluxio FsPath:{} -> CosPath:{}", alluxioPath, stringBuilder.toString());
+        return stringBuilder.toString();
+      }
+    }
+    return null;
+  }
+
+  /**
+   * @param mountTable mount table
+   * @param cosPath CosN path
+   * @return alluxio path
+   */
+  public static String getAlluxioPathByCosNPath(final Map<String, String> mountTable,
+      final String cosPath) {
+    for (Map.Entry<String, String> entry: mountTable.entrySet()) {
+      String mMountPoint = entry.getKey();
+      String ufsUri = entry.getValue();
+      // Precondition: mount points will not be nested
+      if (isFileInFolder(cosPath, ufsUri)) {
+        StringBuilder stringBuilder = new StringBuilder();
+        stringBuilder.append(mMountPoint);
+        if (cosPath.length() > ufsUri.length()) {
+          String relativePath = cosPath.substring(ufsUri.length());
+          stringBuilder.append(relativePath);
+        }
+        LOG.info("CosPath:{} -> Alluxio FsPath:{}", cosPath, stringBuilder.toString());
+        return stringBuilder.toString();
+      }
+    }
+    return null;
+  }
+
   private HadoopUtils() {} // prevent instantiation
 }
