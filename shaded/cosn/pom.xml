@@ -24,9 +24,9 @@
 
   <properties>
     <build.path>${project.parent.parent.basedir}/build</build.path>
-    <cosn.hadoop-cos.version>3.1.0-5.8.5</cosn.hadoop-cos.version>
-    <cosn.cos_api.version>5.6.19</cosn.cos_api.version>
-    <cosn.hadoop.version>3.1.0</cosn.hadoop.version>
+    <cosn.hadoop-cos.version>2.8.5-5.9.4</cosn.hadoop-cos.version>
+    <cosn.cos_api.version>5.6.32</cosn.cos_api.version>
+    <cosn.hadoop.version>2.8.5</cosn.hadoop.version>
   </properties>
 
   <dependencies>
@@ -51,19 +51,15 @@
       <scope>provided</scope>
     </dependency>
     <dependency>
-      <groupId>com.qcloud.cos</groupId>
-      <artifactId>hadoop-cos</artifactId>
-      <version>${cosn.hadoop-cos.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>com.qcloud</groupId>
-      <artifactId>cos_api-bundle</artifactId>
-      <version>${cosn.cos_api.version}</version>
+      <groupId>com.tencent.cloud.emr</groupId>
+      <artifactId>hadoop-temrfs</artifactId>
+      <version>1.0.6</version>
     </dependency>
     <dependency>
       <groupId>org.apache.hadoop</groupId>
       <artifactId>hadoop-common</artifactId>
       <version>${cosn.hadoop.version}</version>
+      <!-- Tencent Cloud EMR provided by From Temrfs -->
       <scope>provided</scope>
     </dependency>
   </dependencies>

@@ -69,7 +69,7 @@ public class CosNShimFileSystem extends FileSystem {
         mMountTable.put(mMountPoint, ufsUri);
       }
     } catch (AlluxioException e) {
-      throw new IOException("Failed to load namespaces ", e);
+      throw new IOException("Failed to initialize CosNShimFileSystem", e);
     }
   }
 

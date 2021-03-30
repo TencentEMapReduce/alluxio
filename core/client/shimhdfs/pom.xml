@@ -40,14 +40,9 @@
       <artifactId>hadoop-client</artifactId>
     </dependency>
     <dependency>
-      <groupId>com.qcloud.cos</groupId>
-      <artifactId>hadoop-cos</artifactId>
-      <version>${hadoop-cos.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>com.qcloud</groupId>
-      <artifactId>cos_api-bundle</artifactId>
-      <version>${cos_api.version}</version>
+      <groupId>com.tencent.cloud.emr</groupId>
+      <artifactId>hadoop-temrfs</artifactId>
+      <version>1.0.6</version>
     </dependency>
 
 

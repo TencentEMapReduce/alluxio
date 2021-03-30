@@ -39,17 +39,13 @@
       <groupId>org.apache.hadoop</groupId>
       <artifactId>hadoop-client</artifactId>
     </dependency>
+    <!-- it use mvn install:install-file -Dfile=hadoop-temrfs-1.0.6.jar
+    -DgroupId=com.tencent.cloud.emr -DartifactId=hadoop-temrfs -Dversion=1.0.6 -Dpackaging=jar -->
     <dependency>
-      <groupId>com.qcloud.cos</groupId>
-      <artifactId>hadoop-cos</artifactId>
-      <version>${hadoop-cos.version}</version>
+      <groupId>com.tencent.cloud.emr</groupId>
+      <artifactId>hadoop-temrfs</artifactId>
+      <version>1.0.6</version>
     </dependency>
-    <dependency>
-      <groupId>com.qcloud</groupId>
-      <artifactId>cos_api-bundle</artifactId>
-      <version>${cos_api.version}</version>
-    </dependency>
-
 
     <!-- Internal dependencies -->
     <dependency>

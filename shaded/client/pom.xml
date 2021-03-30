@@ -90,11 +90,6 @@
     </dependency>
     <dependency>
       <groupId>org.alluxio</groupId>
-      <artifactId>alluxio-core-client-shim-hdfs</artifactId>
-      <version>${project.version}</version>
-    </dependency>
-    <dependency>
-      <groupId>org.alluxio</groupId>
       <artifactId>alluxio-core-client-fs</artifactId>
       <version>${project.version}</version>
     </dependency>
@@ -220,6 +215,13 @@
                     <exclude>mozilla/public-suffix-list.txt</exclude>
                   </excludes>
                 </filter>
+                <filter>
+                  <artifact>*:*</artifact>
+                  <excludes>
+                    <exclude>org/apache/hadoop/security/proto/*</exclude>
+                    <exclude>org/apache/hadoop/security/proto/**/*</exclude>
+                  </excludes>
+                </filter>
               </filters>
               <relocations>
                 <!-- Relocate the native netty libraries to be prefixed with our shade prefix -->
@@ -290,6 +292,10 @@
                     <exclude>org/xml/sax/*</exclude>
                     <exclude>org/xml/sax/**/*</exclude>
                   </excludes>
+                </relocation>
+                <relocation>
+                  <pattern>jline/</pattern>
+                  <shadedPattern>${shading.prefix}.jline.</shadedPattern>
                 </relocation>
               </relocations>
               <transformers>

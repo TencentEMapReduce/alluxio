@@ -25,6 +25,7 @@
 
   <properties>
     <build.path>${project.parent.parent.basedir}/build</build.path>
+    <ufs.hadoop.version>2.8.5</ufs.hadoop.version>
   </properties>
 
   <dependencies>
