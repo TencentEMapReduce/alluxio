@@ -49,8 +49,11 @@ public class CosNShimFileSystem extends FileSystem {
   public synchronized void initialize(URI uri, org.apache.hadoop.conf.Configuration conf,
       @Nullable AlluxioConfiguration alluxioConfiguration)
       throws IOException {
+    LOG.debug("initialize CosNShimFileSystem, uri:{}, hadoopConf:{}, alluxioConf:{}",
+        uri, conf, alluxioConfiguration);
     super.initialize(uri, conf, alluxioConfiguration);
     try {
+      //todo,mAlluxioConf
       Map<String, MountPointInfo> mountTable = mFileSystem.getMountTable();
       mMountTable = new HashMap<>();
       for (Map.Entry<String, MountPointInfo> entry: mountTable.entrySet()) {
