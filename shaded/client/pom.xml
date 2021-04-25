@@ -218,8 +218,12 @@
                 <filter>
                   <artifact>*:*</artifact>
                   <excludes>
+                    <!--hive conflict-->
                     <exclude>org/apache/hadoop/security/proto/*</exclude>
                     <exclude>org/apache/hadoop/security/proto/**/*</exclude>
+                    <!--cos-ranger conflict-->
+                    <exclude>org/apache/hadoop/fs/cosn/ranger/*</exclude>
+                    <exclude>org/apache/hadoop/fs/cosn/ranger/**/*</exclude>
                   </excludes>
                 </filter>
               </filters>
